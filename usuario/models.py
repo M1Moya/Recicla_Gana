@@ -1,18 +1,23 @@
 from django.db import models
 
 # Create your models here.
-#class AuthUser(models.Model):
-#    password = models.CharField(max_length=128)
-#    last_login = models.DateTimeField(blank=True, null=True)
-#    is_superuser = models.IntegerField()
-#    rut = models.CharField(unique=True, max_length=150)
-#    first_name = models.CharField(max_length=150)
-#    last_name = models.CharField(max_length=150)
-#    email = models.CharField(max_length=254)
-#    is_staff = models.IntegerField()
-#    is_active = models.IntegerField()
-#    date_joined = models.DateTimeField()
+class Material(models.Model):
+    id = models.CharField(primary_key=True, max_length=5, db_column='Id_Material')
+    material = models.CharField(max_length=40, db_column='Material')
+    valor_puntos = models.IntegerField(db_column='Valor_Unitario_Puntos')
 
-class Ejemplo(models.Model):
-    nombre = models.CharField(blank=True, max_length=15, db_column='Nombre')
-    apellido = models.CharField(blank=True, max_length=15, db_column='Apellido')
+    class Meta:
+        managed = False
+
+
+    def __str__(self):
+        return self.material
+    
+class Canjeables(models.Model):
+    id_recom = models.AutoField(primary_key=True, unique=True, db_column="Id_Recompensa", null=False)
+    recompensa = models.CharField(db_column="Recompensa", max_length=40, null=False)
+    puntos = models.IntegerField(db_column="Puntos")
+    categoria = models.CharField(db_column="Categoria", max_length=20, default="", null=False)
+
+    def __str__(self):
+        return self.recompensa
