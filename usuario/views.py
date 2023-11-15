@@ -14,7 +14,7 @@ class ListRecompensaView(ListView):
 #Vista para poder Agregar Nuevas Recompensas
 class NewRecompensa(CreateView):
     model = Canjeables
-    template_name = "new_recompensa_new.html"
+    template_name = "recompensa_new.html"
     fields = ["recompensa", "categoria", "puntos"]
     success_url = reverse_lazy("recompensa")
 
