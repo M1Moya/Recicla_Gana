@@ -1,6 +1,6 @@
-{% extends "base.html" %}  {% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="container mt-5">
-    <h1 class="text-white">Recompensa</h1>
+    <h1 class="text-white">Recompensas</h1>
     <a class="btn btn-success" href="{% url 'new_recompensa'%}">Agregar Recompensa</a> <!-- Generar un boton que lleve al template de añadir un producto-->
     <br>
     <div class="row text-white">
@@ -22,8 +22,8 @@
                   <td>{{ canjeables.recompensa }}</td>
                   <td>{{ canjeables.categoria }}</td>
                   <td>{{ canjeables.puntos }}</td>
-                  <td><a href="" class="btn btn-primary">Editar</a></td>
-                  <td><a href="" class="btn btn-danger">Eliminar</a></td>  
+                  <td><a href="{% url 'edit_recompensa' canjeables.id_recom %}" class="btn btn-primary">Editar</a></td>
+                  <td><a href="{% url 'delete_recompensa' canjeables.id_recom %}" class="btn btn-danger">Eliminar</a></td>  
                 </tr>  
               {% endfor %}
             </tbody>
